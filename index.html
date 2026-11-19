@@ -1,0 +1,356 @@
+<!-- redeploy -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eagle Web - Explore online work opportunities, membership plans and your member dashboard.">
+  <title>Eagle Web | Online Opportunities</title>
+  <style>
+    :root{--navy:#101d3a;--blue:#1769e0;--sky:#eaf2ff;--gold:#f2b544;--ink:#17233b;--muted:#65728a;--white:#fff;--bg:#f6f8fc;--line:#e5eaf2;--green:#16865b}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+    a{text-decoration:none;color:inherit}.wrap{width:min(1120px,92%);margin:auto}
+    header{background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 15px #15264a12}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-size:25px;font-weight:900;letter-spacing:-1px;color:var(--navy)}.brand span{color:var(--blue)}
+    .links{display:flex;align-items:center;gap:25px;font-size:14px;font-weight:700;color:#42506a}
+    .links a:hover{color:var(--blue)}.nav-actions{display:flex;gap:10px;align-items:center}
+    .btn{border:0;border-radius:9px;padding:12px 19px;font-weight:800;cursor:pointer;display:inline-block;font-size:14px;transition:.2s}
+    .btn-primary{background:var(--blue);color:#fff;box-shadow:0 7px 18px #1769e033}.btn-primary:hover{background:#0d55bf;transform:translateY(-1px)}
+    .btn-light{background:#edf3ff;color:var(--blue)}.btn-outline{border:1px solid #d6deeb;color:var(--navy);background:#fff}
+    .menu{display:none;background:none;border:0;font-size:26px;color:var(--navy)}
+    .hero{background:linear-gradient(115deg,#101d3a 0%,#173d78 58%,#1769e0 100%);color:#fff;padding:88px 0 82px;overflow:hidden;position:relative}
+    .hero:after{content:"";position:absolute;width:430px;height:430px;border:1px solid #ffffff24;border-radius:50%;right:-90px;top:-130px;box-shadow:0 0 0 45px #ffffff08,0 0 0 95px #ffffff06}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:45px;align-items:center;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;background:#ffffff18;border:1px solid #ffffff30;padding:7px 12px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+    h1{font-size:clamp(38px,5vw,59px);line-height:1.08;letter-spacing:-2px;margin:20px 0}.hero p{font-size:17px;color:#e0e9fa;max-width:590px}
+    .hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}.hero .btn-light{background:#fff;color:var(--navy)}
+    .hero-note{font-size:12px!important;color:#c5d5f2!important;margin-top:18px}
+    .hero-card{background:#fff;color:var(--ink);padding:27px;border-radius:18px;box-shadow:0 25px 60px #06132f55;max-width:390px;margin-left:auto}
+    .hero-card .small{font-size:12px;color:var(--muted);font-weight:700}.hero-card h3{font-size:23px;margin:5px 0 18px}
+    .stat-row{display:flex;justify-content:space-between;padding:13px 0;border-top:1px solid var(--line);font-size:14px}.stat-row strong{color:var(--blue)}
+    section{padding:76px 0}.section-head{text-align:center;max-width:690px;margin:0 auto 38px}.kicker{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:900}
+    h2{font-size:clamp(28px,4vw,39px);line-height:1.2;margin:10px 0;color:var(--navy);letter-spacing:-1px}.section-head p{color:var(--muted);margin:0}
+    .steps,.work-grid,.plans,.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:25px;box-shadow:0 8px 25px #15264a08}
+    .icon{width:47px;height:47px;border-radius:13px;background:var(--sky);display:grid;place-items:center;font-size:22px;margin-bottom:16px}
+    .card h3{margin:0 0 8px;color:var(--navy);font-size:18px}.card p{margin:0;color:var(--muted);font-size:14px}
+    .work-grid{grid-template-columns:repeat(3,1fr)}.work-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:23px}
+    .work-card .icon{background:#fff4dc}.work-card h3{margin:0 0 5px}.work-card p{margin:0;color:var(--muted);font-size:14px}
+    .plans{grid-template-columns:repeat(4,1fr);align-items:stretch}.plan{position:relative;padding:25px 21px}.plan.featured{border:2px solid var(--blue);transform:translateY(-8px)}
+    .tag{font-size:10px;font-weight:900;color:#fff;background:var(--blue);padding:5px 9px;border-radius:20px;position:absolute;right:15px;top:15px}
+    .plan-name{font-weight:900;color:var(--navy);font-size:18px}.price{font-size:32px;font-weight:900;color:var(--blue);margin:12px 0 2px}.price small{font-size:13px;color:var(--muted);font-weight:600}
+    .plan ul{padding:0;list-style:none;margin:20px 0}.plan li{font-size:13px;color:#536078;padding:7px 0;border-bottom:1px solid #f0f2f6}.plan li:before{content:"✓";color:var(--green);font-weight:900;margin-right:8px}
+    .plan .btn{width:100%;text-align:center}
+    .cta{background:linear-gradient(110deg,#eaf2ff,#f8fbff);border:1px solid #dce8fc;border-radius:20px;padding:42px;text-align:center}
+    .cta p{color:var(--muted);max-width:600px;margin:0 auto 22px}
+    .faq{max-width:800px;margin:auto}.faq details{background:#fff;border:1px solid var(--line);border-radius:11px;margin:10px 0;padding:17px 20px}.faq summary{font-weight:800;color:var(--navy);cursor:pointer}.faq details p{color:var(--muted);font-size:14px;margin-bottom:0}
+    footer{background:var(--navy);color:#d7e1f3;padding:48px 0 20px}.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}.footer-brand{font-size:25px;font-weight:900;color:#fff}.footer-brand span{color:#70a7ff}footer p,footer a{font-size:13px;color:#b9c8e2}footer h4{color:#fff;margin-top:4px}.footer-links{display:grid;gap:8px}.copyright{border-top:1px solid #ffffff20;margin-top:32px;padding-top:18px;font-size:12px;color:#9fb1d0}
+    .modal{display:none;position:fixed;inset:0;background:#08142dcc;z-index:50;padding:20px;align-items:center;justify-content:center}.modal.show{display:flex}.modal-box{background:#fff;border-radius:16px;padding:27px;width:min(440px,100%);position:relative;max-height:90vh;overflow:auto}.close{position:absolute;right:17px;top:12px;border:0;background:none;font-size:25px;cursor:pointer;color:#647089}
+    .modal-box h3{margin:0 0 5px;color:var(--navy);font-size:24px}.modal-box>p{margin:0 0 18px;color:var(--muted);font-size:13px}
+    label{display:block;font-size:12px;font-weight:800;margin:13px 0 5px;color:#42506a}input,select{width:100%;padding:12px;border:1px solid #dce2ed;border-radius:8px;font-size:14px;outline:none}input:focus,select:focus{border-color:var(--blue)}.modal-box .btn{width:100%;margin-top:18px}
+    .notice{font-size:12px;color:#68758d;background:#f4f7fc;padding:11px;border-radius:8px;margin-top:14px}
+    @media(max-width:850px){.links{display:none;position:absolute;left:0;right:0;top:76px;background:#fff;padding:20px 5%;box-shadow:0 10px 15px #15264a15;flex-direction:column;align-items:flex-start}.links.open{display:flex}.menu{display:block}.nav-actions .btn-outline{display:none}.hero-grid{grid-template-columns:1fr}.hero-card{margin:10px 0 0;max-width:480px}.plans{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){section{padding:58px 0}.hero{padding:65px 0}.steps,.work-grid,.features{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.plan.featured{transform:none}.footer-grid{grid-template-columns:1fr}.cta{padding:30px 20px}.nav{height:68px}.links{top:68px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home">EAGLE <span>WEB</span></a>
+    <nav class="links" id="navLinks">
+      <a href="#home">Home</a><a href="#how">How It Works</a><a href="#work">Opportunities</a><a href="#plans">Membership</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="btn btn-outline" onclick="openModal('login')">Login</button>
+      <button class="btn btn-primary" onclick="openModal('register')">Join Now</button>
+      <button class="menu" aria-label="Toggle navigation" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">🦅 Your digital opportunity starts here</div>
+        <h1>Explore online opportunities with Eagle Web</h1>
+        <p>Discover a simple online platform built to help members explore digital tasks, learn new skills and manage their membership journey in one place.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-light" onclick="openModal('register')">Get Started</button>
+          <a class="btn btn-primary" style="background:#ffffff20;border:1px solid #ffffff55;box-shadow:none" href="#how">Learn How It Works</a>
+        </div>
+        <p class="hero-note">Membership does not guarantee earnings. Review all terms and opportunities before making a payment.</p>
+      </div>
+      <div class="hero-card">
+        <div class="small">WELCOME TO EAGLE WEB</div>
+        <h3>Your online journey, organized.</h3>
+        <div class="stat-row"><span>Explore opportunities</span><strong>Discover</strong></div>
+        <div class="stat-row"><span>Manage your account</span><strong>Anytime</strong></div>
+        <div class="stat-row"><span>Member support</span><strong>Guidance</strong></div>
+        <div class="stat-row"><span>Platform access</span><strong>Online</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Getting started</div><h2>How Eagle Web works</h2><p>Follow these simple steps to explore the platform and manage your membership.</p></div>
+      <div class="steps">
+        <article class="card"><div class="icon">📝</div><h3>1. Create an account</h3><p>Register with your details and set up your member profile.</p></article>
+        <article class="card"><div class="icon">🪪</div><h3>2. Review membership</h3><p>Compare the available membership options and read the terms before choosing.</p></article>
+        <article class="card"><div class="icon">💻</div><h3>3. Explore the platform</h3><p>Access available learning resources, task information and member support.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" style="background:#fff">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Explore and learn</div><h2>Opportunities to discover</h2><p>Explore different areas of online work and digital skills. Availability may vary.</p></div>
+      <div class="work-grid">
+        <article class="work-card"><div class="icon">📋</div><h3>Online Tasks</h3><p>Find out about simple online task categories and their requirements.</p></article>
+        <article class="work-card"><div class="icon">📱</div><h3>Digital Skills</h3><p>Build familiarity with digital tools, online platforms and productivity.</p></article>
+        <article class="work-card"><div class="icon">🤝</div><h3>Community & Referrals</h3><p>Learn how member invitations and community participation are managed.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="plans">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Membership options</div><h2>Choose your membership</h2><p>Review each option carefully. Prices shown are the membership amounts supplied for this page.</p></div>
+      <div class="plans">
+        <article class="card plan"><div class="plan-name">Silver</div><div class="price">$27.13</div><small style="color:var(--muted)">Membership plan</small><ul><li>Member account access</li><li>Platform information</li><li>Member support details</li></ul><button class="btn btn-primary" onclick="choosePlan('Silver','$27.13')">Select Silver</button></article>
+        <article class="card plan"><div class="plan-name">Gold</div><div class="price">$34.88</div><small style="color:var(--muted)">Membership plan</small><ul><li>Member account access</li><li>Platform information</li><li>Member support details</li></ul><button class="btn btn-primary" onclick="choosePlan('Gold','$34.88')">Select Gold</button></article>
+        <article class="card plan featured"><span class="tag">POPULAR</span><div class="plan-name">Diamond</div><div class="price">$46.51</div><small style="color:var(--muted)">Membership plan</small><ul><li>Member account access</li><li>Platform information</li><li>Member support details</li></ul><button class="btn btn-primary" onclick="choosePlan('Diamond','$46.51')">Select Diamond</button></article>
+        <article class="card plan"><div class="plan-name">Titanium</div><div class="price">$85.27</div><small style="color:var(--muted)">Membership plan</small><ul><li>Member account access</li><li>Platform information</li><li>Member support details</li></ul><button class="btn btn-primary" onclick="choosePlan('Titanium','$85.27')">Select Titanium</button></article>
+      </div>
+      <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:22px">Please confirm the official membership terms, benefits, refund policy and payment recipient before paying.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:10px">
+    <div class="wrap"><div class="cta"><div class="kicker">Become a member</div><h2>Ready to explore Eagle Web?</h2><p>Create a profile to begin. Registration creates an account but does not activate a paid membership.</p><button class="btn btn-primary" onclick="openModal('register')">Create Your Account</button></div></div>
+  </section>
+
+  <section id="faq" style="background:#fff">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Need help?</div><h2>Frequently asked questions</h2><p>Some useful information before you get started.</p></div>
+      <div class="faq">
+        <details><summary>How do I join Eagle Web?</summary><p>Use Join Now to create an account with your email and password.</p></details>
+        <details><summary>Does membership guarantee income?</summary><p>No. Membership is not a guarantee of income. Review verified platform terms before making a payment.</p></details>
+        <details><summary>Can I make payments on this website?</summary><p>Payment processing has not been connected. Do not enter payment details here.</p></details>
+        <details><summary>How can I access my dashboard?</summary><p>Register or log in to view your member information.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div><div class="footer-brand">EAGLE <span>WEB</span></div><p>Explore digital opportunities and manage your member journey with Eagle Web.</p></div>
+      <div><h4>Quick Links</h4><div class="footer-links"><a href="#home">Home</a><a href="#how">How It Works</a><a href="#work">Opportunities</a><a href="#plans">Membership</a></div></div>
+      <div><h4>Member Access</h4><div class="footer-links"><a href="#" onclick="openModal('login');return false">Login</a><a href="#" onclick="openModal('register');return false">Register</a><a href="#faq">Help & FAQ</a></div></div>
+    </div>
+    <div class="copyright">© <span id="year"></span> Eagle Web. All rights reserved.</div>
+  </div>
+</footer>
+
+<div class="modal" id="accountModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box" id="modalBox">
+    <button class="close" aria-label="Close" onclick="closeModal()">×</button>
+    <div id="accountView">
+      <h3 id="modalTitle">Create your account</h3>
+      <p id="modalDescription">Enter your details to register.</p>
+      <form id="accountForm">
+        <div id="planChoice" style="display:none"><label for="selectedPlan">Selected membership</label><input id="selectedPlan" readonly></div>
+        <div id="fullNameGroup"><label for="fullName">Full name</label><input id="fullName" name="fullName" autocomplete="name" placeholder="Your full name" required></div>
+        <div id="emailGroup"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+        <div id="phoneGroup"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number"></div>
+        <div id="passwordGroup"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="new-password" placeholder="Create a password" required minlength="6"></div>
+        <button class="btn btn-primary" type="submit" id="submitText">Create Account</button>
+      </form>
+      <div class="notice" id="formNotice" role="status">Your details are submitted securely to Supabase.</div>
+    </div>
+    <div id="dashboardView" style="display:none">
+      <h3>Welcome to Eagle Web!</h3>
+      <p>Your account is logged in.</p>
+      <div class="notice" id="memberDetails"></div>
+      <button class="btn btn-primary" id="logoutButton" type="button">Logout</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(() => {
+  const SUPABASE_URL = "https://mympxqqovrnudkhuoktm.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_e1-jmHbhm_3nKEMlS4jgcw_s1RTdCqz";
+
+  if (!window.supabase) {
+    alert("Supabase library could not load. Check your internet connection and refresh.");
+    return;
+  }
+
+  const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const $ = id => document.getElementById(id);
+  let currentMode = "register";
+
+  $("year").textContent = new Date().getFullYear();
+
+  function showAccountView() {
+    $("accountView").style.display = "block";
+    $("dashboardView").style.display = "none";
+  }
+
+  function openModal(mode) {
+    currentMode = mode;
+    showAccountView();
+    $("accountModal").classList.add("show");
+    $("modalTitle").textContent = mode === "login" ? "Member login" : "Create your account";
+    $("modalDescription").textContent = mode === "login"
+      ? "Enter your email and password to log in."
+      : "Create your Eagle Web member account.";
+    $("fullNameGroup").style.display = mode === "login" ? "none" : "block";
+    $("phoneGroup").style.display = mode === "login" ? "none" : "block";
+    $("planChoice").style.display = "none";
+    $("fullName").required = mode === "register";
+    $("password").autocomplete = mode === "login" ? "current-password" : "new-password";
+    $("submitText").textContent = mode === "login" ? "Login" : "Create Account";
+    $("formNotice").textContent = mode === "login"
+      ? "Log in with the email and password used when registering."
+      : "Your account will be created using Supabase authentication.";
+    $("navLinks").classList.remove("open");
+  }
+
+  window.openModal = openModal;
+  window.closeModal = () => $("accountModal").classList.remove("show");
+
+  window.choosePlan = (name, price) => {
+    openModal("register");
+    $("planChoice").style.display = "block";
+    $("selectedPlan").value = name + " — " + price;
+    $("modalDescription").textContent = "You selected " + name + ". Complete your registration.";
+  };
+
+  function escapeHTML(value) {
+    return String(value || "").replace(/[&<>"']/g, char => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+    })[char]);
+  }
+
+  async function showDashboard(user) {
+    $("accountView").style.display = "none";
+    $("dashboardView").style.display = "block";
+    $("accountModal").classList.add("show");
+    $("memberDetails").textContent = "Loading your member information...";
+
+    const { data: member, error } = await db
+      .from("members")
+      .select("full_name,email,phone,membership_plan,created_at")
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if (error) {
+      $("memberDetails").textContent =
+        "You are logged in, but your member details could not be loaded: " + error.message;
+      return;
+    }
+
+    $("memberDetails").innerHTML =
+      "<strong>Member information</strong><br><br>" +
+      "Name: " + escapeHTML(member?.full_name || user.email) + "<br><br>" +
+      "Email: " + escapeHTML(member?.email || user.email) + "<br><br>" +
+      "Phone: " + escapeHTML(member?.phone || "Not provided") + "<br><br>" +
+      "Membership: " + escapeHTML(member?.membership_plan || "Not selected");
+  }
+
+  async function logout() {
+    const { error } = await db.auth.signOut();
+    if (error) {
+      alert("Logout error: " + error.message);
+      return;
+    }
+    $("accountModal").classList.remove("show");
+    openModal("login");
+    $("formNotice").textContent = "You have successfully logged out.";
+  }
+
+  $("logoutButton").addEventListener("click", logout);
+
+  $("accountForm").addEventListener("submit", async event => {
+    event.preventDefault();
+    const button = $("submitText");
+    button.disabled = true;
+    button.textContent = "Please wait...";
+
+    try {
+      const email = $("email").value.trim();
+      const password = $("password").value;
+
+      if (currentMode === "register") {
+        const fullName = $("fullName").value.trim();
+        const phone = $("phone").value.trim();
+        const selected = $("selectedPlan").value;
+        const membershipPlan = selected ? selected.split(" — ")[0] : null;
+
+        const { data, error } = await db.auth.signUp({
+          email,
+          password,
+          options: {
+            emailRedirectTo: window.location.origin,
+            data: {
+              full_name: fullName,
+              phone,
+              membership_plan: membershipPlan
+            }
+          }
+        });
+
+        if (error) throw error;
+
+        if (data.session && data.user) {
+  const { error: memberError } = await db.from("members").insert([{
+    user_id: data.user.id,
+    email: email,
+    full_name: fullName,
+    phone: phone || null,
+    membership_plan: membershipPlan
+  }]);
+  if (memberError) alert("Account created but member not saved: " + memberError.message);
+  else alert("Registration successful. Your account has been created.");
+  await showDashboard(data.user);
+        } else {
+          $("formNotice").textContent =
+            "Registration submitted. Check your email for a confirmation link before logging in.";
+          $("accountForm").reset();
+        }
+      } else {
+        const { data, error } = await db.auth.signInWithPassword({
+          email,
+          password
+        });
+
+        if (error) throw error;
+        await showDashboard(data.user);
+      }
+    } catch (error) {
+      alert("Error: " + error.message);
+    } finally {
+      button.disabled = false;
+      button.textContent = currentMode === "login" ? "Login" : "Create Account";
+    }
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") window.closeModal();
+  });
+
+  db.auth.getSession().then(({ data, error }) => {
+    if (error) console.error("Session check:", error.message);
+    if (data?.session) console.log("Eagle Web member session restored.");
+  });
+})();
+</script>
+</body>
+</html>
